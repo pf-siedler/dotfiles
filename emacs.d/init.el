@@ -66,27 +66,10 @@
 
 (el-get-bundle auto-complete)
 (el-get-bundle org)
-;;(el-get-bundle org-plus-contrib)
+(el-get-bundle open-junk-file)
 
-;;; LaTeX 形式のファイル PDF に変換するためのコマンド
-(setq org-latex-pdf-process
-      '("lualatex %f"))
-
-;;; \hypersetup{...} を出力しない
-(setq org-latex-with-hyperref nil)
-(with-eval-after-load 'ox-latex
-(add-to-list 'org-latex-classes
-             '("thesis"
-"\\documentclass{ltjsarticle}
-[NO-PACKAGES]
-[NO-DEFAULT-PACKAGES]
-\\usepackage[dvipdfmx]{graphicx}"
-               ("\\section{%s}" . "\\section*{%s}")
-               ("\\subsection{%s}" . "\\subsection*{%s}")
-               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-               ("\\paragraph{%s}" . "\\paragraph*{%s}")
-               ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
-
-
+(setq open-junk-file-format "~/org/junk/%Y%m%d-%H%M%S.org")
+(global-set-key "\C-xj" 'open-junk-file)
 
 (setq load-path (append '("~/.emacs.d/conf") load-path))
+(load "org")

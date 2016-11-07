@@ -1,7 +1,8 @@
-#!/bin/bash
+ #!/bin/bash
 
-cp -rf ~/.emacs.d/init.el ./emacs.d/init.el
-cp -rf ~/.emacs.d/conf/ ./emacs.d/conf/
+DOT_FILES=(.zshrc .tmux.conf .emacs.d/init.el .emacs.d/conf/org.el)
 
-cp ~/.zshrc ./
-cp ~/.tmux.conf ./
+for file in ${DOT_FILES[@]}
+do
+     ln -sf $HOME/util/dotfiles/$file $HOME/$file
+done

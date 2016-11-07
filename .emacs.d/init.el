@@ -66,10 +66,12 @@
 
 (el-get-bundle auto-complete)
 (el-get-bundle org)
+(el-get-bundle org-mode)
 (el-get-bundle open-junk-file)
 
 (setq open-junk-file-format "~/org/junk/%Y%m%d-%H%M%S.org")
 (global-set-key "\C-xj" 'open-junk-file)
 
 (setq load-path (append '("~/.emacs.d/conf") load-path))
+
 (load "org")

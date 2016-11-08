@@ -1,3 +1,15 @@
+#------------------------------------------------------
+#環境変数とか
+#------------------------------------------------------
+PYENV_ROOT=~/.pyenv
+export PATH=$PATH:$PYENV_ROOT/bin
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+export PATH="$PYENV_ROOT/versions/anaconda3-2.5.0/bin/:$PATH"
+
+#------------------------------------------------------
+#zshインタフェースの設定
+#------------------------------------------------------
 # lsの文字色
 eval $(gdircolors ~/.dircolors-solarized)
 

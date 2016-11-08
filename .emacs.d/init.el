@@ -1,3 +1,8 @@
+;; 言語設定
+(set-language-environment 'Japanese)
+;; 文字コード設定
+(prefer-coding-system 'utf-8)
+
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
@@ -69,9 +74,7 @@
 (el-get-bundle org-mode)
 (el-get-bundle open-junk-file)
 
-(setq open-junk-file-format "~/org/junk/%Y%m%d-%H%M%S.org")
-(global-set-key "\C-xj" 'open-junk-file)
-
 (setq load-path (append '("~/.emacs.d/conf") load-path))
 
 (load "org")
+(load "interface")

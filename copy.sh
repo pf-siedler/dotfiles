@@ -1,8 +1,8 @@
  #!/bin/bash
 
-DOT_FILES=(.zshrc .tmux.conf .emacs.d/init.el .emacs.d/conf/org.el)
+DOT_FILES=(.zshrc .tmux.conf .emacs.d/init.el .emacs.d/conf/org.el .emacs.d/conf/interface.el)
 
 for file in ${DOT_FILES[@]}
 do
-     ln -sf $HOME/util/dotfiles/$file $HOME/$file
+     ln -s $HOME/util/dotfiles/$file $HOME/$file
 done

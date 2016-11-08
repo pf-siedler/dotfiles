@@ -4,5 +4,5 @@ DOT_FILES=(.zshrc .tmux.conf .emacs.d/init.el .emacs.d/conf/org.el .emacs.d/conf
 
 for file in ${DOT_FILES[@]}
 do
-     ln -s $HOME/util/dotfiles/$file $HOME/$file
+     ln -s $HOME/dotfiles/$file $HOME/$file
 done

@@ -1,3 +1,4 @@
+(require 'org)
 ;; 言語設定
 (set-language-environment 'Japanese)
 ;; 文字コード設定
@@ -78,3 +79,15 @@
 
 (load "org")
 (load "interface")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+'(org-agenda-files (quote ("~/googlrdrive/UT/notes/WirelessCom/Mid.org")) t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

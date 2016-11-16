@@ -13,7 +13,7 @@
 ;;キーバインド
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
-(global-set-key "\C-ca" 'org-agenda)
+(global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 
 (setq org-default-notes-file (concat org-directory "~/org/notes.org"))
@@ -48,7 +48,7 @@
 
 ;; LaTeX 形式のファイル PDF に変換するためのコマンド
 (setq org-latex-pdf-process
-      '("lualatex %f"))
+      '("lualatex %f" "lualatex %f"))
 
 ;; \hypersetup{...} を出力しない
 (setq org-latex-with-hyperref nil)
@@ -64,7 +64,8 @@
 \\usepackage{siunitx}
 \\usepackage{ascmac}
 \\usepackage{amsmath}
-\\usepackage{url}"
+\\usepackage{url}
+\\usepackage[hiragino-pron]{luatexja-preset}"
                ("\\section{%s}" . "\\section*{%s}")
                ("\\subsection{%s}" . "\\subsection*{%s}")
                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")

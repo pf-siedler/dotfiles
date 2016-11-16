@@ -63,6 +63,7 @@
 \\usepackage{enumitem}
 \\usepackage{siunitx}
 \\usepackage{ascmac}
+\\usepackage{amsmath}
 \\usepackage{url}"
                ("\\section{%s}" . "\\section*{%s}")
                ("\\subsection{%s}" . "\\subsection*{%s}")

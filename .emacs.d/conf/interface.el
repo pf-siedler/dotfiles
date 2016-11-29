@@ -25,5 +25,5 @@
 (setq windmove-wrap-around t)
 
 ;; junkファイルを開く
-(setq open-junk-file-format "~/org/junk/%Y%m%d-%H%M%S.org")
+(setq open-junk-file-format "org/junk/%Y%m%d-%H%M%S.org")
 (global-set-key "\C-xj" 'open-junk-file)

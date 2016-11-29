@@ -1,4 +1,3 @@
-(require 'org)
 ;; 言語設定
 (set-language-environment 'Japanese)
 ;; 文字コード設定

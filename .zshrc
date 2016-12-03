@@ -10,6 +10,9 @@ export PATH="$PYENV_ROOT/versions/anaconda3-2.5.0/bin/:$PATH"
 #------------------------------------------------------
 #zshインタフェースの設定
 #------------------------------------------------------
+#pbcopyを有効化
+#set-option -g default-command "reattach-to-user-namespace -l zsh"
+
 # lsの文字色
 eval $(gdircolors ~/.dircolors-solarized)
 
@@ -62,9 +65,19 @@ cdpath=(~)
 # Ctrl+sのロック, Ctrl+qのロック解除を無効にする
 setopt no_flow_control
 
+# git関連の情報をロード
+autoload -Uz vcs_info
+# PROMPT変数内で変数参照
+setopt prompt_subst
+
+# vcsの表示    
+zstyle ':vcs_info:*' formats '%s][* %F{green}%b%f'    
+zstyle ':vcs_info:*' actionformats '%s][* %F{green}%b%f(%F{red}%a%f)'    
+
+precmd () { vcs_info }
 # プロンプトを2行で表示、時刻を表示
-PROMPT="%(?.%{${fg[green]}%}.%{${fg[red]}%})%n${reset_color}@${fg[blue]}%m${reset_color}(%*%) %~
-%# "
+PROMPT="%(?.%{${fg[green]}%}.%{${fg[red]}%})%n${reset_color}(%*%) %{${fg[cyan]}%}%~%{${reset_color}%}
+${vcs_info_msg_0_} %# "
 
 # 補完後、メニュー選択モードになり左右キーで移動が出来る
 zstyle ':completion:*:default' menu select=2

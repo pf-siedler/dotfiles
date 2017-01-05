@@ -1,7 +1,56 @@
+
 ;; 言語設定
 (set-language-environment 'Japanese)
+;; Special setup for various symbols and some rarely used characters
+;; covered well by Symbola.
+(dolist (symbol-subgroup '((#x0250 . #x02AF)   ;; IPA Extensions
+                           (#x0370 . #x03FF)   ;; Greek and Coptic
+                           (#x0500 . #x052F)   ;; Cyrillic Supplement
+                           (#x2000 . #x206F)   ;; General Punctuation
+                           (#x2070 . #x209F)   ;; Superscripts and Subscripts
+                           (#x20A0 . #x20CF)   ;; Currency Symbols
+                           (#x2100 . #x214F)   ;; Letterlike Symbols
+                           (#x2150 . #x218F)   ;; Number Forms
+                           (#x2190 . #x21FF)   ;; Arrows
+                           (#x2200 . #x22FF)   ;; Mathematical Operators
+                           (#x2300 . #x23FF)   ;; Miscellaneous Technical
+                           (#x2400 . #x243F)   ;; Control Pictures
+                           (#x2440 . #x245F)   ;; Optical Char Recognition
+                           (#x2460 . #x24FF)   ;; Enclosed Alphanumerics
+                           (#x25A0 . #x25FF)   ;; Geometric Shapes
+                           (#x2600 . #x26FF)   ;; Miscellaneous Symbols
+                           (#x2700 . #x27bF)   ;; Dingbats
+                           (#x27C0 . #x27EF)   ;; Misc Mathematical Symbols-A
+                           (#x27F0 . #x27FF)   ;; Supplemental Arrows-A
+                           (#x2900 . #x297F)   ;; Supplemental Arrows-B
+                           (#x2980 . #x29FF)   ;; Misc Mathematical Symbols-B
+                           (#x2A00 . #x2AFF)   ;; Suppl. Math Operators
+                           (#x2B00 . #x2BFF)   ;; Misc Symbols and Arrows
+                           (#x2E00 . #x2E7F)   ;; Supplemental Punctuation
+                           (#x4DC0 . #x4DFF)   ;; Yijing Hexagram Symbols
+                           (#xFE10 . #xFE1F)   ;; Vertical Forms
+                           (#x10100 . #x1013F) ;; Aegean Numbers
+                           (#x102E0 . #x102FF) ;; Coptic Epact Numbers
+                           (#x1D000 . #x1D0FF) ;; Byzanthine Musical Symbols
+                           (#x1D200 . #x1D24F) ;; Ancient Greek Musical Notation
+                           (#x1F0A0 . #x1F0FF) ;; Playing Cards
+                           (#x1F100 . #x1F1FF) ;; Enclosed Alphanumeric Suppl
+                           (#x1F300 . #x1F5FF) ;; Misc Symbols and Pictographs
+                           (#x1F600 . #x1F64F) ;; Emoticons
+                           (#x1F650 . #x1F67F) ;; Ornamental Dingbats
+                           (#x1F680 . #x1F6FF) ;; Transport and Map Symbols
+                           (#x1F700 . #x1F77F) ;; Alchemical Symbols
+                           (#x1F780 . #x1F7FF) ;; Geometric Shapes Extended
+                           (#x1F800 . #x1F8FF))) ;; Supplemental Arrows-C
+  (set-fontset-font "fontset-default" symbol-subgroup "Symbola"))
+;; Box Drawing and Block Elements
+(set-fontset-font "fontset-default" '(#x2500 . #x259F) "FreeMono")
+
 ;; 文字コード設定
 (prefer-coding-system 'utf-8)
+
+;;visible bell
+(setq visible-bell t)
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -12,7 +61,7 @@
 ;;画面サイズ
 (setq initial-frame-alist
       (append
-       '((top . 20)    ; フレームの Y 位置(ピクセル数)
+       '((top . 0)    ; フレームの Y 位置(ピクセル数)
 	 (left . 0)    ; フレームの X 位置(ピクセル数)
 	 (width . 100)    ; フレーム幅(文字数)
 	 (height . 56)   ; フレーム高(文字数)
@@ -73,14 +122,9 @@
 (el-get-bundle org)
 (el-get-bundle org-mode)
 (el-get-bundle open-junk-file)
+(el-get-bundle multi-term)
 
 (setq load-path (append '("~/.emacs.d/conf") load-path))
 
 (load "org")
 (load "interface")
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (org))))

@@ -1,3 +1,4 @@
+
 ;; 対応する括弧の強調
 (show-paren-mode t)
 
@@ -13,6 +14,10 @@
 ;; M-jを入力すると対応するカッコに飛ぶ
 (global-set-key (kbd "M-j") 'match-paren)
 
+;; M-[、M-]でindent-rigidly
+(global-set-key (kbd "M-[") 'indent-rigidly-left)
+(global-set-key (kbd "M-]") 'indent-rigidly-right)
+
 (defun match-paren (arg)
   "Go to the matching paren if on a paren; otherwise insert %."
   (interactive "p")
@@ -25,5 +30,5 @@
 (setq windmove-wrap-around t)
 
 ;; junkファイルを開く
-(setq open-junk-file-format "org/junk/%Y%m%d-%H%M%S.org")
+(setq open-junk-file-format "~/org/junk/%Y%m%d-%H%M%S.org")
 (global-set-key "\C-xj" 'open-junk-file)

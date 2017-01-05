@@ -20,7 +20,7 @@ eval $(gdircolors ~/.dircolors-solarized)
 export LANG=ja_JP.UTF-8
 
 # パスを追加したい場合
-export PATH="$HOME/bin:$PATH"
+##export PATH="$HOME/bin:$PATH"
 
 # 色を使用
 autoload -Uz colors

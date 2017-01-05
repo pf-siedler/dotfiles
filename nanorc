@@ -1,0 +1,22 @@
+## Use auto-indentation.
+set autoindent
+
+## Don't wrap text at all.
+set nowrap
+
+## Use smooth scrolling as the default.
+set smooth
+
+## Use this tab size instead of the default; it must be greater than 0.
+set tabsize 2
+
+## Convert typed tabs to spaces.
+set tabstospaces
+
+## keybind
+bind ^C  copytext     main
+bind ^Y  uncut        main
+bind ^D  delete       main
+bind M-Z redo         main
+bind ^Z  undo         main
+bind ^S  writeout     main

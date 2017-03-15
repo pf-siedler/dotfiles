@@ -46,7 +46,7 @@
 
 ;; LaTeX 形式のファイル PDF に変換するためのコマンド
 (setq org-latex-pdf-process
-      '("lualatex %f" "lualatex %f"))
+      '("lualatex %f" "upbibtex %b" "lualatex %f" "lualatex %f"))
 
 ;; \hypersetup{...} を出力しない
 (setq org-latex-with-hyperref nil)
@@ -68,7 +68,26 @@
                ("\\subsection{%s}" . "\\subsection*{%s}")
                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+(add-to-list 'org-latex-classes
+             '("withtitle"
+"\\documentclass[a4paper,onecolumn,oneside,openany,titlepage,report]{ltjsarticle}
+[NO-PACKAGES]
+[NO-DEFAULT-PACKAGES]
+\\usepackage{graphicx}
+\\usepackage{color}
+\\usepackage{enumitem}
+\\usepackage{siunitx}
+\\usepackage{ascmac}
+\\usepackage{amsmath}
+\\usepackage{url}
+\\usepackage[hiragino-pron]{luatexja-preset}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
                ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

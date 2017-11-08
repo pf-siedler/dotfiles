@@ -1,6 +1,6 @@
  #!/bin/bash
 
-DOT_FILES=(zshrc tmux.conf emacs.d/init.el emacs.d/conf/org.el emacs.d/conf/interface.el nanorc)
+DOT_FILES=(zshrc tmux.conf nanorc)
 
 for file in ${DOT_FILES[@]}
 do

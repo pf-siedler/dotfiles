@@ -1,27 +1,18 @@
 #------------------------------------------------------
-#環境変数とか
-#------------------------------------------------------
-PYENV_ROOT=~/.pyenv
-export PATH=$PATH:$PYENV_ROOT/bin
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-export PATH="$PYENV_ROOT/versions/anaconda3-2.5.0/bin/:$PATH"
-
-#------------------------------------------------------
 #zshインタフェースの設定
 #------------------------------------------------------
 #pbcopyを有効化
 #set-option -g default-command "reattach-to-user-namespace -l zsh"
-
-# lsの文字色
-eval $(gdircolors ~/.dircolors-solarized)
 
 # 日本語を使用
 export LANG=ja_JP.UTF-8
 
 # パスを追加したい場合
 ##export PATH="$HOME/bin:$PATH"
-
+export PATH="$PATH:$HOME/miniconda3/bin"
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 # 色を使用
 autoload -Uz colors
 colors
@@ -45,7 +36,6 @@ SAVEHIST=10000
 
 #エイリアス
 alias ls='gls --color=auto'
-alias emacs='/usr/local/Cellar/emacs/25.1/Emacs.app/Contents/MacOS/Emacs -nw'
 
 # cdコマンドを省略して、ディレクトリ名のみの入力で移動
 setopt auto_cd
@@ -65,19 +55,19 @@ cdpath=(~)
 # Ctrl+sのロック, Ctrl+qのロック解除を無効にする
 setopt no_flow_control
 
-# git関連の情報をロード
 autoload -Uz vcs_info
-# PROMPT変数内で変数参照
-setopt prompt_subst
+zstyle ':vcs_info:*' formats '%s:[%b]'
+zstyle ':vcs_info:*' actionformats '%s:[%b|%a]'
 
-# vcsの表示    
-zstyle ':vcs_info:*' formats '%s][* %F{green}%b%f'    
-zstyle ':vcs_info:*' actionformats '%s][* %F{green}%b%f(%F{red}%a%f)'    
+function precmd() {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
 
-precmd () { vcs_info }
-# プロンプトを2行で表示、時刻を表示
-PROMPT="%(?.%{${fg[green]}%}.%{${fg[red]}%})%n${reset_color}(%*%) %{${fg[cyan]}%}%~%{${reset_color}%}
-${vcs_info_msg_0_} %# "
+RPROMPT="%1(v|%F{yellow}%1v%f|)"
+PROMPT="%(?.%F{green}%}.%F{red})%n@%m%f %*
+%F{cyan}[%~]%f $ "
 
 # 補完後、メニュー選択モードになり左右キーで移動が出来る
 zstyle ':completion:*:default' menu select=2
@@ -97,3 +87,8 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^p" history-beginning-search-backward-end
 bindkey "^b" history-beginning-search-forward-end
 export PATH="/usr/local/bin:$PATH"
+source /usr/local/bin/virtualenvwrapper.sh
+
+
+. /Users/pfsiedler/torch/install/bin/torch-activate
+export PATH="/usr/local/opt/qt/bin:$PATH"

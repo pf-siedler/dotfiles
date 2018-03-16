@@ -13,6 +13,8 @@ export PATH="$PATH:$HOME/miniconda3/bin"
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export ANDROID_NDK_HOME="$HOME/Development/android/android-ndk-r11b"
+export PATH=$PATH:$ANDROID_NDK_HOME
 # 色を使用
 autoload -Uz colors
 colors
@@ -33,6 +35,24 @@ setopt histignorealldups
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
+
+#PowerShell
+function powerline_precmd() {
+    PS1="$(powerline-shell --shell zsh $?)"
+}
+
+function install_powerline_precmd() {
+  for s in "${precmd_functions[@]}"; do
+    if [ "$s" = "powerline_precmd" ]; then
+      return
+    fi
+  done
+  precmd_functions+=(powerline_precmd)
+}
+
+if [ "$TERM" != "linux" ]; then
+    install_powerline_precmd
+fi
 
 #エイリアス
 alias ls='gls --color=auto'
@@ -89,6 +109,4 @@ bindkey "^b" history-beginning-search-forward-end
 export PATH="/usr/local/bin:$PATH"
 source /usr/local/bin/virtualenvwrapper.sh
 
-
-. /Users/pfsiedler/torch/install/bin/torch-activate
 export PATH="/usr/local/opt/qt/bin:$PATH"

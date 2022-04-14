@@ -45,6 +45,7 @@
       ca = "commit --amend";
     };
     extraConfig = {
+      core.editor = "nano";
       init.defaultBranch = "master";
       merge = {
         conflictStyle = "diff3";
@@ -61,6 +62,10 @@
   dotDir = ".config/zsh";
 
   enableSyntaxHighlighting = true;
+
+   shellAliases = {
+      reload = "home-manager switch";
+   };
 
   envExtra = ''
     if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
@@ -80,6 +85,15 @@
       character = {
         success_symbol = "[➜](bold green)";
         error_symbol = "[➜](bold red)";
+      };
+
+      git_status = {
+        conflicted = "🤼";
+        modified = "📝";
+        stashed = "💾";
+        staged = "++\($count\)";
+        renamed = "📛";
+        deleted = "--\($count\)";
       };
 
       kubernetes = {

@@ -83,8 +83,8 @@
 
     settings = {
       character = {
-        success_symbol = "[➜](bold green)";
-        error_symbol = "[➜](bold red)";
+        success_symbol = "[▶](bold green)";
+        error_symbol = "[▶](bold red)";
       };
 
       git_status = {
@@ -100,7 +100,14 @@
         disabled = false;
       };
 
-      format = "$directory$git_branch$git_commit$git_state$git_metrics$git_status\n$character";
+      time = {
+        disabled = false;
+        format = "[⏲️ $time]($style)";
+        style = "bold fg:black bg:yellow";
+        time_format = "%H:%M";
+      };
+
+      format = "$directory$git_branch$git_commit$git_state$git_metrics$git_status\n$time$character";
 
       right_format = "$all";
     };

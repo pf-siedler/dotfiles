@@ -3,8 +3,8 @@
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "pfsiedler";
-  home.homeDirectory = "/home/pfsiedler";
+  home.username = builtins.getEnv "USER";
+  home.homeDirectory = builtins.getEnv "HOME";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -20,10 +20,10 @@
   programs.home-manager.enable = true;
 
    home.packages = [
-    pkgs.jetbrains-mono
     pkgs.niv
     pkgs.nodejs-16_x
     pkgs.yarn
+    pkgs.jq
   ];
 
   programs.direnv = {
@@ -83,8 +83,8 @@
 
     settings = {
       character = {
-        success_symbol = "[▶](bold green)";
-        error_symbol = "[▶](bold red)";
+        success_symbol = "[=>](bold green)";
+        error_symbol = "[=>](bold red)";
       };
 
       git_status = {
@@ -107,9 +107,11 @@
         time_format = "%H:%M";
       };
 
-      format = "$directory$git_branch$git_commit$git_state$git_metrics$git_status\n$time$character";
+      format = "$directory$git_branch$git_commit$git_state$git_metrics$git_status\n$character";
 
       right_format = "$all";
+
+      continuation_prompt = "[…](yellow) ";
     };
   };
 }

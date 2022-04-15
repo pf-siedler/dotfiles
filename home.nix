@@ -19,7 +19,7 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-   home.packages = [
+  home.packages = [
     pkgs.niv
     pkgs.nodejs-16_x
     pkgs.yarn
@@ -42,7 +42,10 @@
       gl = "log --oneline --graph --decorate";
       ss = "stash store";
       sp = "stash pop";
-      ca = "commit --amend";
+      sl = "stash list";
+      cm = "commit";
+      cma = "commit --amend";
+      delete-merged = "git branch --merged | grep -vE \\\\\\*\\|master | xargs -I % git branch -d %";
     };
     extraConfig = {
       core.editor = "nano";
@@ -51,7 +54,16 @@
         conflictStyle = "diff3";
         ff = false;
       };
+      rebase = {
+        autosquash = true;
+        autostash = true;
+      };
     };
+    ignores = [
+      ".DS_Store"
+      ".direnv"
+      ".vscode"
+    ];
   };
 
   programs.zsh = {
@@ -63,9 +75,9 @@
 
   enableSyntaxHighlighting = true;
 
-   shellAliases = {
-      reload = "home-manager switch";
-   };
+  shellAliases = {
+    reload = "home-manager switch";
+  };
 
   envExtra = ''
     if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
@@ -97,6 +109,8 @@
         };
       };
 
+      cmd_duration.format = "🐢 [$duration]($style) ";
+
       git_status = {
         conflicted = "🤼";
         modified = "📝";
@@ -125,7 +139,7 @@
         time_format = "%H:%M";
       };
 
-      format = "$directory$git_branch$git_commit$git_state$git_metrics$git_status\n$character";
+      format = "$directory$git_branch$git_commit$git_state$git_metrics$git_status$cmd_duration\n$character";
 
       right_format = "$all";
 

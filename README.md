@@ -9,12 +9,10 @@ my config files
 
 ## usage
 
-one time
-
-1. run `home-manager -f nixpkgs/home.nix build`
+1. run `home-manager -f home.nix build`
 2. run `./result/activate`
 
-permanent
+or
 
-1. move `nixpkgs/` to `$HOME/.config/`
+1. move `home.nix` to `$HOME/.config/nixpkgs/`
 2. run `home-manager switch`

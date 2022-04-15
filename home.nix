@@ -87,6 +87,16 @@
         error_symbol = "[=>](bold red)";
       };
 
+      aws = {
+        format = ''[$symbol($profile)(\($region\))(\[$duration\])]($style)'';
+        symbol = "🅰 ";
+        region_aliases = {
+          ap-northeast-1 = "東京";
+          ap-northeast-3 = "大阪";
+          us-west-2 = "Oregon";
+        };
+      };
+
       git_status = {
         conflicted = "🤼";
         modified = "📝";
@@ -98,7 +108,15 @@
 
       kubernetes = {
         disabled = false;
+        format = "[$symbol$context( \($namespace\))]($style) ";
       };
+
+      nix_shell = {
+        format = "[$symbol$state( \($name\))]($style)";
+        symbol = " ";
+      };
+
+      nodejs.format = "[$symbol($version )]($style)";
 
       time = {
         disabled = false;

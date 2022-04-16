@@ -24,6 +24,7 @@
     pkgs.nodejs-16_x
     pkgs.yarn
     pkgs.jq
+    pkgs.gnumake
   ];
 
   programs.direnv = {

@@ -32,7 +32,7 @@
     nix-direnv.enable = true;
   };
 
-   programs.git = {
+  programs.git = {
     enable = true;
 
     userName = "Takuma Suzuki";
@@ -41,7 +41,7 @@
       br = "branch";
       co = "checkout";
       gl = "log --oneline --graph --decorate";
-      ss = "stash store";
+      ss = "stash";
       sp = "stash pop";
       sl = "stash list";
       cm = "commit";
@@ -51,6 +51,12 @@
     extraConfig = {
       core.editor = "nano";
       init.defaultBranch = "master";
+      pull = {
+        ff = "only";
+      };
+      push = {
+        default = "current";
+      };
       merge = {
         conflictStyle = "diff3";
         ff = false;
@@ -116,6 +122,10 @@
         conflicted = "🤼";
         modified = "📝";
         stashed = "💾";
+        diverged = "↕️";
+        ahead = "⬆️";
+        behind = "⬇️";
+        up_to_date = "🈁";
         staged = "++\($count\)";
         renamed = "📛";
         deleted = "--\($count\)";

@@ -46,6 +46,8 @@
       sl = "stash list";
       cm = "commit";
       cma = "commit --amend";
+      # default remote が origin であることを前提にしている
+      renew = "git fetch && git rebase -i origin/$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')";
       delete-merged = "git branch --merged | grep -vE \\\\\\*\\|master | xargs -I % git branch -d %";
     };
     extraConfig = {
@@ -73,6 +75,17 @@
     ];
   };
 
+  programs.gh = {
+    enable = true;
+    settings = {
+      aliases = {
+        pc = "pr create --web";
+        pv = "pr view --web";
+        b = "browse";
+      };
+    };
+  };
+
   programs.zsh = {
   enable = true;
 
@@ -86,6 +99,11 @@
     reload = "home-manager switch";
   };
 
+  history = {
+    extended = true;
+    path = "${config.xdg.dataHome}/zsh/.zsh_history";
+  };
+
   envExtra = ''
     if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
       . ~/.nix-profile/etc/profile.d/nix.sh
@@ -94,6 +112,8 @@
 
   initExtra = ''
       export FPATH
+
+      . ${./zsh/history.zsh}
     '';
   };
 

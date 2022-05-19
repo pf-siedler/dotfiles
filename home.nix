@@ -26,6 +26,7 @@
     pkgs.jq
     pkgs.yq
     pkgs.gnumake
+    pkgs.jwt-cli
   ];
 
   programs.direnv = {
@@ -115,6 +116,7 @@
       export FPATH
 
       . ${./zsh/history.zsh}
+      source <(kubectl completion zsh)
     '';
   };
 

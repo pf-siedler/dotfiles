@@ -48,6 +48,10 @@
       sl = "stash list";
       cm = "commit";
       cma = "commit --amend";
+      fixup = "commit --fixup HEAD";
+      fx = "commit --fixup HEAD";
+      squash = "commit --squash HEAD";
+      sq = "commit --squash HEAD";
       # default remote が origin であることを前提にしている
       renew = "git fetch && git rebase -i origin/$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')";
       delete-merged = "git branch --merged | grep -vE \\\\\\*\\|master | xargs -I % git branch -d %";

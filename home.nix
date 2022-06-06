@@ -52,6 +52,7 @@
       fx = "commit --fixup HEAD";
       squash = "commit --squash HEAD";
       sq = "commit --squash HEAD";
+      pukk = "!echo \"（○｀3´○）ぷきゅ〜！！\" && git pull";
       # default remote が origin であることを前提にしている
       renew = "git fetch && git rebase -i origin/$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')";
       delete-merged = "git branch --merged | grep -vE \\\\\\*\\|master | xargs -I % git branch -d %";

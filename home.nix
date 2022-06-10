@@ -53,9 +53,8 @@
       squash = "commit --squash HEAD";
       sq = "commit --squash HEAD";
       pukk = "!echo \"（○｀3´○）ぷきゅ〜！！\" && git pull";
-      # default remote が origin であることを前提にしている
-      renew = "git fetch && git rebase -i origin/$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')";
-      delete-merged = "git branch --merged | grep -vE \\\\\\*\\|master | xargs -I % git branch -d %";
+      latest = "!git --no-pager branch --sort=authordate | tail -n 5";
+      delete-merged = "!git branch --merged | grep -vE \\\\\\*\\|master | xargs -I % git branch -d %";
     };
     extraConfig = {
       core.editor = "nano";

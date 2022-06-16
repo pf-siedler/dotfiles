@@ -27,6 +27,7 @@
     pkgs.yq
     pkgs.gnumake
     pkgs.jwt-cli
+    pkgs.awscli
   ];
 
   programs.direnv = {

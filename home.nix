@@ -79,6 +79,8 @@
       ".DS_Store"
       ".direnv"
       ".vscode"
+      "node_modules/"
+      ".env"
     ];
   };
 

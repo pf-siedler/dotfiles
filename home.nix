@@ -105,6 +105,7 @@
   enableSyntaxHighlighting = true;
 
   shellAliases = {
+    k = "kubectl";
     reload = "home-manager switch";
   };
 

@@ -21,13 +21,10 @@
 
   home.packages = [
     pkgs.niv
-    pkgs.nodejs-16_x
-    pkgs.yarn
     pkgs.jq
     pkgs.yq
     pkgs.gnumake
     pkgs.jwt-cli
-    pkgs.awscli
   ];
 
   programs.direnv = {

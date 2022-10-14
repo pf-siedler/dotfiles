@@ -16,6 +16,9 @@
   # changes in each release.
   home.stateVersion = "22.05";
 
+  imports = [ (import <codex>).hmModule.${builtins.currentSystem} ];
+  codex.enable = true;
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -25,6 +28,8 @@
     pkgs.yq
     pkgs.gnumake
     pkgs.jwt-cli
+    pkgs.colordiff
+    pkgs.nano
   ];
 
   programs.direnv = {

@@ -4,10 +4,10 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
     home-manager.url = "github:nix-community/home-manager";
-    codex.url = "path:/Users/pfsiedler/herp/codex";
+    #codex.url = "path:/Users/pfsiedler/herp/codex";
   };
 
-  outputs = { self, nixpkgs, flake-utils, home-manager, codex }:
+  outputs = { self, nixpkgs, flake-utils, home-manager}:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};

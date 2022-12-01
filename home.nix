@@ -88,6 +88,7 @@
 
   programs.gh = {
     enable = true;
+    enableGitCredentialHelper = true;
     settings = {
       aliases = {
         pc = "pr create --web";

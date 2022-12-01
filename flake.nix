@@ -6,7 +6,7 @@
     codex.url = "path:/Users/pfsiedler/herp/codex";
   };
 
-  outputs = { self, nixpkgs, home-manager, codex ? {}, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, codex ? { }, ... }@inputs: {
     homeConfigurations.herp = let
       system = "x86_64-darwin";
       pkgs = nixpkgs.legacyPackages.x86_64-darwin;
@@ -19,6 +19,7 @@
         ({ ... }: {
           home.username = "pfsiedler";
           home.homeDirectory = "/Users/pfsiedler";
+          home.packages = [ pkgs.cachix ];
           codex.enable = true;
         })
       ];

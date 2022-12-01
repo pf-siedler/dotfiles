@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, codex, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -16,8 +16,8 @@
   # changes in each release.
   home.stateVersion = "22.05";
 
-  imports = [ (import <codex>).hmModule.${builtins.currentSystem} ];
-  codex.enable = true;
+  imports = [ codex.hmModule.${builtins.currentSystem} ];
+  config.codex.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

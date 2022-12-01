@@ -7,13 +7,24 @@
     codex.url = "path:/Users/pfsiedler/herp/codex";
   };
 
-  outputs = { self, nixpkgs, flake-utils, home-manager, codex }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
+  outputs = { self, nixpkgs, flake-utils, home-manager, codex, ... }:
+  let
+    eachSystem = flake-utils.lib.eachSystem [
+      "aarch64-linux"
+      "aarch64-darwin"
+      "x86_64-darwin"
+      "x86_64-linux"
+    ];
+  in
+  {
+      inherit flake-utils;
+      inherit nixpkgs;
+      inherit eachSystem;
+    } // (eachSystem (system:
+    let
         pkgs = nixpkgs.legacyPackages.${system};
       in
       rec {
         packages = {make = pkgs.gnumake;};
-      }
-  );
+  }));
 }

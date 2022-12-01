@@ -18,7 +18,7 @@
         ({ ... }: {
           home.username = "pfsiedler";
           home.homeDirectory = "/Users/pfsiedler";
-          #config.codex.enable = true;
+          codex.enable = true;
         })
       ];
     };

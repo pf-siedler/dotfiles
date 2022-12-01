@@ -16,6 +16,7 @@
 
   home.packages = [
     pkgs.niv
+    pkgs.nixfmt
     pkgs.jq
     pkgs.yq
     pkgs.gnumake
@@ -47,19 +48,16 @@
       fx = "commit --fixup HEAD";
       squash = "commit --squash HEAD";
       sq = "commit --squash HEAD";
-      pukk = "!echo \"（○｀3´○）ぷきゅ〜！！\" && git pull";
+      pukk = ''!echo "（○｀3´○）ぷきゅ〜！！" && git pull'';
       latest = "!git --no-pager branch --sort=authordate | tail -n 5";
-      delete-merged = "!git branch --merged | grep -vE \\\\\\*\\|master | xargs -I % git branch -d %";
+      delete-merged =
+        "!git branch --merged | grep -vE \\\\\\*\\|master | xargs -I % git branch -d %";
     };
     extraConfig = {
       core.editor = "nano";
       init.defaultBranch = "master";
-      pull = {
-        ff = "only";
-      };
-      push = {
-        default = "current";
-      };
+      pull = { ff = "only"; };
+      push = { default = "current"; };
       merge = {
         conflictStyle = "diff3";
         ff = false;
@@ -69,13 +67,7 @@
         autostash = true;
       };
     };
-    ignores = [
-      ".DS_Store"
-      ".direnv"
-      ".vscode"
-      "node_modules/"
-      ".env"
-    ];
+    ignores = [ ".DS_Store" ".direnv" ".vscode" "node_modules/" ".env" ];
   };
 
   programs.gh = {
@@ -91,31 +83,31 @@
   };
 
   programs.zsh = {
-  enable = true;
+    enable = true;
 
-  defaultKeymap = "emacs";
+    defaultKeymap = "emacs";
 
-  dotDir = ".config/zsh";
+    dotDir = ".config/zsh";
 
-  enableSyntaxHighlighting = true;
+    enableSyntaxHighlighting = true;
 
-  shellAliases = {
-    k = "kubectl";
-    reload = "home-manager switch";
-  };
+    shellAliases = {
+      k = "kubectl";
+      reload = "home-manager switch";
+    };
 
-  history = {
-    extended = true;
-    path = "${config.xdg.dataHome}/zsh/.zsh_history";
-  };
+    history = {
+      extended = true;
+      path = "${config.xdg.dataHome}/zsh/.zsh_history";
+    };
 
-  envExtra = ''
-    if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
-      . ~/.nix-profile/etc/profile.d/nix.sh
-    fi
-  '';
+    envExtra = ''
+      if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
+        . ~/.nix-profile/etc/profile.d/nix.sh
+      fi
+    '';
 
-  initExtra = ''
+    initExtra = ''
       export FPATH
 
       . ${./zsh/history.zsh}
@@ -133,7 +125,7 @@
       };
 
       aws = {
-        format = ''[$symbol($profile)(\($region\))(\[$duration\])]($style)'';
+        format = "[$symbol($profile)(\\($region\\))(\\[$duration\\])]($style)";
         symbol = "🅰 ";
         region_aliases = {
           ap-northeast-1 = "東京";
@@ -152,18 +144,18 @@
         ahead = "⬆️";
         behind = "⬇️";
         up_to_date = "🈁";
-        staged = "++\($count\)";
+        staged = "++($count)";
         renamed = "📛";
-        deleted = "--\($count\)";
+        deleted = "--($count)";
       };
 
       kubernetes = {
         disabled = false;
-        format = "[$symbol$context( \($namespace\))]($style) ";
+        format = "[$symbol$context( ($namespace))]($style) ";
       };
 
       nix_shell = {
-        format = "[$symbol$state( \($name\))]($style)";
+        format = "[$symbol$state( ($name))]($style)";
         symbol = " ";
       };
 
@@ -176,7 +168,9 @@
         time_format = "%H:%M";
       };
 
-      format = "$directory$git_branch$git_commit$git_state$git_metrics$git_status$cmd_duration\n$character";
+      format = ''
+        $directory$git_branch$git_commit$git_state$git_metrics$git_status$cmd_duration
+        $character'';
 
       right_format = "$all";
 

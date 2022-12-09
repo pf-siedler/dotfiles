@@ -11,6 +11,14 @@
   # changes in each release.
   home.stateVersion = "22.05";
 
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+      netrc-file = $HOME/.config/nix/netrc
+    '';
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 

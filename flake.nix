@@ -3,7 +3,8 @@
 
   inputs = {
     home-manager.url = "github:nix-community/home-manager";
-    codex.url = "path:/Users/pfsiedler/herp/codex";
+    codex.url =
+      "github:herp-inc/codex/e92a3f38bd777a1e24b2d4308d302ebf5a7b0688";
   };
 
   outputs = { self, nixpkgs, home-manager, codex ? { }, ... }@inputs: {

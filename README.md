@@ -5,14 +5,27 @@ my config files
 ## requirements
 
 - [nix](https://nixos.org/)
-- [home-manager](https://github.com/nix-community/home-manager)
+  - flake が使えるバージョン
 
-## usage
+## setup （自分向けメモ）
 
-1. run `home-manager -f home.nix build`
-2. run `./result/activate`
+### nix.conf を準備する
 
-or
+1. GitHub で token を作成し `./netrc` に保存
+2. `./gen-nixconf.sh`
+3. nix.conf と netrc を `$HOME/.config/nix/` にコピー
 
-1. move `home.nix` to `$HOME/.config/nixpkgs/`
-2. run `home-manager switch`
+### direnv が無い場合
+
+home-manager で direnv が install されるようになっているが、初回実行時など direnv が無い環境で動かす場合
+
+```sh
+source .env.sample
+nix develop
+```
+
+## usage (自分向けメモ)
+
+```sh
+nix run home-manager -- switch --flake '.#herp'
+```

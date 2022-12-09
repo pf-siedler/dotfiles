@@ -22,12 +22,23 @@
     pkgs.gnumake
     pkgs.jwt-cli
     pkgs.colordiff
-    pkgs.nano
   ];
 
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+  };
+
+  programs.neovim = {
+    enable = true;
+    extraConfig = ''
+      source ${pkgs.vimPlugins.vim-plug}/plug.vim
+      source ${./vim/plugins.vim}
+      set encoding=utf-8
+      set autoindent
+      set smartindent
+      set number
+    '';
   };
 
   programs.git = {
@@ -54,7 +65,7 @@
         "!git branch --merged | grep -vE \\\\\\*\\|master | xargs -I % git branch -d %";
     };
     extraConfig = {
-      core.editor = "nano";
+      core.editor = pkgs.lib.getExe pkgs.neovim;
       init.defaultBranch = "master";
       pull = { ff = "only"; };
       push = { default = "current"; };
@@ -92,6 +103,7 @@
     enableSyntaxHighlighting = true;
 
     shellAliases = {
+      vim = "nvim";
       k = "kubectl";
       reload = "home-manager switch";
     };

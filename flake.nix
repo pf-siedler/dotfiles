@@ -44,6 +44,8 @@
     } // flake-utils.lib.eachDefaultSystem (system:
       let pkgs = nixpkgs.legacyPackages.${system};
       in {
-        devShell = pkgs.mkShell { buildInputs = [ pkgs.gnumake pkgs.nixfmt ]; };
+        devShell = pkgs.mkShell {
+          buildInputs = [ pkgs.gnumake pkgs.nixfmt pkgs.shellcheck ];
+        };
       });
 }

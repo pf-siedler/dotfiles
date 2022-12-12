@@ -13,7 +13,8 @@ my config files
 
 1. GitHub で token を作成し `./netrc` に保存
 2. `./gen-nixconf.sh`
-3. nix.conf と netrc を `$HOME/.config/nix/` にコピー
+
+で home-manager を動かすのに最低限必要な設定が `$HOME/.config/nix/nix.conf` に作られる
 
 ### direnv が無い場合
 

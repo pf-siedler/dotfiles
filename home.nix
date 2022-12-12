@@ -22,6 +22,7 @@
     pkgs.gnumake
     pkgs.jwt-cli
     pkgs.colordiff
+    pkgs.shellcheck
   ];
 
   programs.direnv = {

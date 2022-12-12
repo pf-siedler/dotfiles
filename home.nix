@@ -79,7 +79,8 @@
         autostash = true;
       };
     };
-    ignores = [ ".DS_Store" ".direnv" ".vscode" "node_modules/" ".env" ];
+    ignores =
+      [ ".DS_Store" ".direnv" ".vscode" "node_modules/" ".env" "result/" ];
   };
 
   programs.gh = {
@@ -106,7 +107,6 @@
     shellAliases = {
       vim = "nvim";
       k = "kubectl";
-      reload = "home-manager switch";
     };
 
     history = {

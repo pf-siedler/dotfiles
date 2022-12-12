@@ -7,7 +7,7 @@ my config files
 - [nix](https://nixos.org/)
   - flake が使えるバージョン
 
-## setup （自分向けメモ）
+## setup
 
 ### nix.conf を準備する
 
@@ -25,8 +25,12 @@ source .env.sample
 nix develop
 ```
 
-## usage (自分向けメモ)
+## usage
 
 ```sh
 nix run home-manager -- switch --flake '.#herp'
 ```
+
+## misc
+
+Starship promptを使っており、一部のアイコンは [Nerd Fonts](https://www.nerdfonts.com/font-downloads) を使わないと正しく表示されない可能性がある

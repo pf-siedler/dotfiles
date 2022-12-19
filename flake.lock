@@ -149,18 +149,17 @@
         "telepresence-pkgs": "telepresence-pkgs"
       },
       "locked": {
-        "lastModified": 1670394012,
-        "narHash": "sha256-O1QIf7F0HO1JP7RVzdbdKTQujrw7H10XOxqElurkxxo=",
-        "owner": "herp-inc",
-        "repo": "codex",
-        "rev": "e92a3f38bd777a1e24b2d4308d302ebf5a7b0688",
-        "type": "github"
+        "lastModified": 1670840473,
+        "narHash": "sha256-+qoqzBFP6q09akbi2SMKlLchbkHS3xhMMni/Cxs7CNY=",
+        "ref": "master",
+        "rev": "41d2b1bb0b6e62fa62b3e96d0ea1f36798372c34",
+        "revCount": 53,
+        "type": "git",
+        "url": "ssh://git@github.com/herp-inc/codex"
       },
       "original": {
-        "owner": "herp-inc",
-        "repo": "codex",
-        "rev": "e92a3f38bd777a1e24b2d4308d302ebf5a7b0688",
-        "type": "github"
+        "type": "git",
+        "url": "ssh://git@github.com/herp-inc/codex"
       }
     },
     "flake-compat": {

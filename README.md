@@ -9,12 +9,9 @@ my config files
 
 ## setup
 
-### nix.conf を準備する
+### ssh
 
-1. GitHub で token を作成し `./netrc` に保存
-2. `./gen-nixconf.sh`
-
-で home-manager を動かすのに最低限必要な設定が `$HOME/.config/nix/nix.conf` に作られる
+private repository を ssh で pull するようにしているため、GitHub の ssh セットアップが必要
 
 ### direnv が無い場合
 
@@ -28,9 +25,9 @@ nix develop
 ## usage
 
 ```sh
-nix run home-manager -- switch --flake '.#herp'
+nix --extra-experimental-features 'nix-command flake' run home-manager -- switch --flake '.#herp'
 ```
 
 ## misc
 
-Starship promptを使っており、一部のアイコンは [Nerd Fonts](https://www.nerdfonts.com/font-downloads) を使わないと正しく表示されない可能性がある
+Starship prompt を使っており、一部のアイコンは [Nerd Fonts](https://www.nerdfonts.com/font-downloads) を使わないと正しく表示されない可能性がある

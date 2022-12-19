@@ -14,6 +14,13 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
+
   home.packages = [
     pkgs.niv
     pkgs.nixfmt

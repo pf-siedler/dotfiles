@@ -3,8 +3,7 @@
 
   inputs = {
     home-manager.url = "github:nix-community/home-manager";
-    codex.url =
-      "github:herp-inc/codex/e92a3f38bd777a1e24b2d4308d302ebf5a7b0688";
+    codex.url = "git+ssh://git@github.com/herp-inc/codex";
     flake-utils.url = "github:numtide/flake-utils";
   };
 

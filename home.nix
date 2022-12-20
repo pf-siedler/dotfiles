@@ -46,6 +46,9 @@
       set autoindent
       set smartindent
       set number
+
+      inoremap <C-a> <C-o>^
+      inoremap <C-e> <C-o>$
     '';
   };
 

@@ -24,9 +24,15 @@ nix develop
 
 ## usage
 
+初回実行時は `--extra-experimental-features 'nix-command flake'` をつける必要がある
+
+例
+
 ```sh
 nix --extra-experimental-features 'nix-command flake' run home-manager -- switch --flake '.#herp'
 ```
+
+`Makefile` にスクリプトをまとめてある
 
 ## misc
 

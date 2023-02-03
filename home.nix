@@ -23,7 +23,7 @@
 
   home.packages = [
     pkgs.niv
-    pkgs.nixfmt
+    pkgs.nixpkgs-fmt
     pkgs.jq
     pkgs.yq
     pkgs.gnumake

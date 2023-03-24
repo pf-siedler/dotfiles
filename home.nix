@@ -29,6 +29,7 @@
     pkgs.jwt-cli
     pkgs.colordiff
     pkgs.shellcheck
+    pkgs.docker-client
   ];
 
   programs.direnv = {

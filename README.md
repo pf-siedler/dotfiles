@@ -37,3 +37,18 @@ nix --extra-experimental-features 'nix-command flake' run home-manager -- switch
 ## misc
 
 Starship prompt を使っており、一部のアイコンは [Nerd Fonts](https://www.nerdfonts.com/font-downloads) を使わないと正しく表示されない可能性がある
+
+### lima
+
+lima を使って docker を動かそうと思う
+
+```sh
+# 初回のみ
+limactl start lima-docker.yaml
+# 二回目以降
+limactl start lima-docker
+
+docker context create lima-lima-docker --docker "host=unix://$HOME/.lima/lima-docker/sock/docker.sock"
+docker context use lima-lima-docker
+docker run hello-world
+```

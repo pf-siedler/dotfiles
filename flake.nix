@@ -21,6 +21,7 @@
           ({ ... }: {
             home.username = "pf-siedler";
             home.homeDirectory = "/Users/pf-siedler";
+            home.packages = [ pkgs.lima ];
             codex.enable = true;
           })
         ];

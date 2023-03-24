@@ -10,18 +10,17 @@
   outputs = { self, nixpkgs, home-manager, flake-utils, codex, ... }@inputs:
     {
       homeConfigurations.herp = let
-        system = "x86_64-darwin";
-        pkgs = nixpkgs.legacyPackages.x86_64-darwin;
+        system = "aarch64-darwin";
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
       in home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = { inherit inputs; };
         modules = [
           ./home.nix
-          codex.hmModule.x86_64-darwin
+          codex.hmModule.aarch64-darwin
           ({ ... }: {
-            home.username = "pfsiedler";
-            home.homeDirectory = "/Users/pfsiedler";
-            home.packages = [ pkgs.cachix ];
+            home.username = "pf-siedler";
+            home.homeDirectory = "/Users/pf-siedler";
             codex.enable = true;
           })
         ];

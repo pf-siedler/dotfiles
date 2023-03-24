@@ -22,7 +22,6 @@
   };
 
   home.packages = [
-    pkgs.niv
     pkgs.nixpkgs-fmt
     pkgs.jq
     pkgs.yq

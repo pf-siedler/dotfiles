@@ -138,6 +138,15 @@
     '';
   };
 
+  programs.kitty = {
+    enable = true;
+    font = {
+      name = "NotoSansMono NFM";
+      size = 16;
+    };
+    theme = "Dracula";
+  };
+
   programs.starship = {
     enable = true;
 

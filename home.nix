@@ -130,6 +130,11 @@
         . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
       fi
       # End Nix
+
+      # start lima-docker if it's stopped
+      if limactl list | grep -q "lima-docker\s*Stopped"; then
+        limactl start lima-docker
+      fi
     '';
 
     initExtra = ''

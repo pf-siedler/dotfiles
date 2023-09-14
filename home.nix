@@ -9,7 +9,7 @@
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "22.05";
+  home.stateVersion = "23.05";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -22,14 +22,12 @@
   };
 
   home.packages = [
-    pkgs.nixpkgs-fmt
-    pkgs.jq
     pkgs.yq
-    pkgs.gnumake
     pkgs.jwt-cli
     pkgs.colordiff
     pkgs.shellcheck
     pkgs.docker-client
+    pkgs.terraform_1
   ];
 
   programs.direnv = {
@@ -95,7 +93,7 @@
 
   programs.gh = {
     enable = true;
-    enableGitCredentialHelper = true;
+    gitCredentialHelper.enable = true;
     settings = {
       aliases = {
         pc = "pr create --web";
@@ -112,11 +110,12 @@
 
     dotDir = ".config/zsh";
 
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
 
     shellAliases = {
       vim = "nvim";
       k = "kubectl";
+      devinit = "nix flake init -t github:pf-siedler/flake-templates#devshell";
     };
 
     history = {

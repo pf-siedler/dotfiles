@@ -21,6 +21,10 @@
     '';
   };
 
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
+    "vscode"
+  ];
+
   home.packages = [
     pkgs.yq
     pkgs.jwt-cli
@@ -48,6 +52,10 @@
       inoremap <C-a> <C-o>^
       inoremap <C-e> <C-o>$
     '';
+  };
+
+  programs.vscode = {
+    enable = true;
   };
 
   programs.git = {

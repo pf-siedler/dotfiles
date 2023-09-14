@@ -48,6 +48,9 @@
             })
           ];
         };
+      lib = {
+        hm-module = (import ./home.nix);
+      };
     } // flake-utils.lib.eachDefaultSystem (system:
       let pkgs = nixpkgs.legacyPackages.${system};
       in {

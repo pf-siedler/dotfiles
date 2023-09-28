@@ -124,6 +124,7 @@
       vim = "nvim";
       k = "kubectl";
       devinit = "nix flake init -t github:pf-siedler/flake-templates#devshell";
+      cdg = "cd \"$(git rev-parse --show-toplevel)\"";
     };
 
     history = {

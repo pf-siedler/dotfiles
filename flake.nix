@@ -18,7 +18,7 @@
           home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
             extraSpecialArgs = { inherit inputs; };
-            modules = [ ./repos/dotfiles/home.nix ];
+            modules = [ ./home.nix ];
           };
         herp =
           let

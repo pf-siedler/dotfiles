@@ -34,6 +34,9 @@
               ({ ... }: {
                 home.username = "pf-siedler";
                 home.homeDirectory = "/Users/pf-siedler";
+                home.packages = [
+                  pkgs.k3d
+                ];
                 codex.enable = true;
               })
             ];

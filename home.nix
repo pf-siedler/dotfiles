@@ -153,22 +153,13 @@
     '';
   };
 
-  programs.kitty = {
-    enable = true;
-    font = {
-      name = "NotoSansMono NFM";
-      size = 16;
-    };
-    theme = "Dracula";
-  };
-
   programs.starship = {
     enable = true;
 
     settings = {
       character = {
-        success_symbol = "[=>](bold green)";
-        error_symbol = "[=>](bold red)";
+	success_symbol = "[ 🙂>](bold green)";
+        error_symbol = "[ 🙃>](bold red)";
       };
 
       aws = {
@@ -202,11 +193,11 @@
       };
 
       nix_shell = {
-        format = "[$symbol$state( ($name))]($style)";
+        format = "[$symbol$state( ($name))]($style) ";
         symbol = " ";
       };
 
-      nodejs.format = "[$symbol($version )]($style)";
+      nodejs.format = "[$symbol($version )]($style) ";
 
       time = {
         disabled = false;
@@ -215,9 +206,7 @@
         time_format = "%H:%M";
       };
 
-      format = ''
-        $directory$git_branch$git_commit$git_state$git_metrics$git_status$cmd_duration
-        $character'';
+      format = ''$directory$git_branch$git_commit$git_state$git_metrics$git_status$cmd_duration'';
 
       right_format = "$all";
 

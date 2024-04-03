@@ -13,7 +13,7 @@
         beelink =
           let
             system = "x86_64-linux";
-            pkgs = nixpkgs.legacyPackages.x86_64-linux;
+            pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
           in
           home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
@@ -23,7 +23,7 @@
         herp =
           let
             system = "aarch64-darwin";
-            pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+            pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
           in
           home-manager.lib.homeManagerConfiguration {
             inherit pkgs;

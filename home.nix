@@ -18,6 +18,7 @@
     package = pkgs.nixFlakes;
     extraOptions = ''
       experimental-features = nix-command flakes
+      extra-trusted-users = pf-siedler
     '';
   };
 

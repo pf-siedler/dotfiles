@@ -29,6 +29,7 @@ nix develop
 例
 
 ```sh
+# home-manager switch --flake .#herp と同等
 nix --extra-experimental-features 'nix-command flakes' run home-manager -- --extra-experimental-features 'nix-command flakes' switch --flake '.#herp'
 ```
 

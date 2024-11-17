@@ -22,17 +22,11 @@
     '';
   };
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
-    "vscode"
-  ];
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (pkgs.lib.getName pkg) [ "vscode" ];
 
-  home.packages = [
-    pkgs.yq
-    pkgs.jwt-cli
-    pkgs.colordiff
-    pkgs.shellcheck
-    pkgs.docker-client
-  ];
+  home.packages =
+    [ pkgs.yq pkgs.jwt-cli pkgs.colordiff pkgs.shellcheck pkgs.docker-client ];
 
   programs.direnv = {
     enable = true;
@@ -55,9 +49,7 @@
     '';
   };
 
-  programs.vscode = {
-    enable = true;
-  };
+  programs.vscode = { enable = true; };
 
   programs.git = {
     enable = true;
@@ -125,7 +117,7 @@
       vim = "nvim";
       k = "kubectl";
       devinit = "nix flake init -t github:pf-siedler/flake-templates#devshell";
-      cdg = "cd \"$(git rev-parse --show-toplevel)\"";
+      cdg = ''cd "$(git rev-parse --show-toplevel)"'';
     };
 
     history = {
@@ -154,64 +146,4 @@
     '';
   };
 
-  programs.starship = {
-    enable = true;
-
-    settings = {
-      character = {
-	success_symbol = "[ 🙂>](bold green)";
-        error_symbol = "[ 🙃>](bold red)";
-      };
-
-      aws = {
-        format = "[$symbol($profile)(\\($region\\))(\\[$duration\\])]($style)";
-        symbol = "🅰 ";
-        region_aliases = {
-          ap-northeast-1 = "東京";
-          ap-northeast-3 = "大阪";
-          us-west-2 = "Oregon";
-        };
-      };
-
-      cmd_duration.format = "🐢 [$duration]($style) ";
-
-      git_status = {
-        conflicted = "🤼";
-        modified = "📝";
-        stashed = "💾";
-        diverged = "↕️";
-        ahead = "⬆️";
-        behind = "⬇️";
-        up_to_date = "🈁";
-        staged = "++($count)";
-        renamed = "📛";
-        deleted = "--($count)";
-      };
-
-      kubernetes = {
-        disabled = false;
-        format = "[$symbol$context( ($namespace))]($style) ";
-      };
-
-      nix_shell = {
-        format = "[$symbol$state( ($name))]($style) ";
-        symbol = " ";
-      };
-
-      nodejs.format = "[$symbol($version )]($style) ";
-
-      time = {
-        disabled = false;
-        format = "[⏲️ $time]($style)";
-        style = "bold fg:black bg:yellow";
-        time_format = "%H:%M";
-      };
-
-      format = ''$directory$git_branch$git_commit$git_state$git_metrics$git_status$cmd_duration'';
-
-      right_format = "$all";
-
-      continuation_prompt = "[…](yellow) ";
-    };
-  };
 }

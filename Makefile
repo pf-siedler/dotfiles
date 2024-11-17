@@ -7,3 +7,6 @@ herp:
 
 surface:
 	nix run home-manager -- switch --flake '.#surface'
+
+beelink:
+	nix run home-manager -- switch --flake '.#beelink'

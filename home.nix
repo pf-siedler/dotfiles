@@ -14,14 +14,6 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      extra-trusted-users = pf-siedler
-    '';
-  };
-
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (pkgs.lib.getName pkg) [ "vscode" ];
 

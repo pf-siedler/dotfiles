@@ -6,6 +6,7 @@ my config files
 
 - [nix](https://nixos.org/)
   - flake が使えるバージョン
+- [home-manager](https://nix-community.github.io/home-manager/)
 
 ## setup
 
@@ -35,6 +36,10 @@ nix --extra-experimental-features 'nix-command flakes' run home-manager -- --ext
 ```
 
 `Makefile` にスクリプトをまとめてある
+
+### WSL で使用する場合
+
+nixos-rebuild switch --flake '.#wsl'
 
 ## misc
 

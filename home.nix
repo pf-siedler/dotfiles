@@ -99,6 +99,8 @@
   programs.zsh = {
     enable = true;
 
+    enableCompletion = true;
+
     defaultKeymap = "emacs";
 
     dotDir = ".config/zsh";

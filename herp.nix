@@ -6,11 +6,11 @@
   home.packages = [ pkgs.colima ];
   codex.enable = true;
   nix = {
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.stable;
     extraOptions = ''
       experimental-features = nix-command flakes
       extra-trusted-users = ${builtins.getEnv "GHE_USERNAME"}
-      access-tokens = ${builtins.getEnv "GHE_TOKEN"}
+      extra-access-tokens = github.com=${builtins.getEnv "GHE_TOKEN"}
     '';
   };
 }

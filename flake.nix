@@ -2,9 +2,9 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/24.05";
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
-    codex.url = "git+ssh://git@github.com/herp-inc/codex";
+    nixpkgs.url = "github:NixOS/nixpkgs/25.05";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    codex.url = "github:herp-inc-hq/codex";
     flake-utils.url = "github:numtide/flake-utils";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     vscode-server.url = "https://github.com/nix-community/nixos-vscode-server/tarball/master";
@@ -32,7 +32,7 @@
                 home.homeDirectory = "/home/pfsiedler";
                 programs.vscode.enable = pkgs.lib.mkForce false;
                 nix = {
-                  package = pkgs.nixFlakes;
+                  package = pkgs.nixVersions.stable;
                   extraOptions = ''
                     experimental-features = nix-command flakes
                     extra-trusted-users = pf-siedler
@@ -74,7 +74,7 @@
                 home.homeDirectory = "/home/pfsiedler";
                 home.packages = [ pkgs.nixpkgs-fmt pkgs.jq pkgs.gnumake ];
                 nix = {
-                  package = pkgs.nixFlakes;
+                  package = pkgs.nixVersions.stable;
                   extraOptions = ''
                     experimental-features = nix-command flakes
                     extra-trusted-users = pf-siedler

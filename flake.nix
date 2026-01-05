@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/25.05";
     home-manager.url = "github:nix-community/home-manager/release-25.05";
-    codex.url = "github:herp-inc-hq/codex";
+    codex.url = "path:///Users/pf-siedler/herp/codex";
     flake-utils.url = "github:numtide/flake-utils";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     vscode-server.url = "https://github.com/nix-community/nixos-vscode-server/tarball/master";
@@ -47,6 +47,7 @@
             pkgs = import nixpkgs {
               inherit system;
               config.allowUnfree = true;
+              overlays = [ codex.overlays.default ];
             };
           in
           home-manager.lib.homeManagerConfiguration {
@@ -56,7 +57,7 @@
               ./home.nix
               ./starship-warp.nix
               ./herp.nix
-              codex.hmModule.aarch64-darwin
+              codex.homeModules.default
             ];
           };
         surface =

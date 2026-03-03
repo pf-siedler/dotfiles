@@ -61,6 +61,7 @@
       fx = "commit --fixup HEAD";
       squash = "commit --squash HEAD";
       sq = "commit --squash HEAD";
+      rvm ="!git fetch & git rebase -i origin/$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')";
       pukk = ''!echo "（○｀3´○）ぷきゅ〜！！" && git pull'';
       latest = "!git --no-pager branch --sort=authordate | tail -n 5";
       delete-merged =
@@ -137,6 +138,27 @@
 
       . ${./zsh/history.zsh}
       source <(kubectl completion zsh)
+
+      # Terraform Plan per File
+      function tpf() {
+        if [ $# -eq 0 ]; then
+          echo "terraform plan per file"
+          echo "Usage: tpf <filename.tf>"
+          return 1
+        fi
+        terraform plan $(cat $1 | grep -E 'resource |module ' | tr -d '"' | awk '{printf("-target=%s.%s ",$2,$3);}')
+      }
+
+      # Terraform Apply per File
+      function taf() {
+        if [ $# -eq 0 ]; then
+          echo "terraform apply per file"
+          echo "Usage: taf <filename.tf>"
+          return 1
+        fi
+        terraform apply $(cat $1 | grep -E 'resource |module ' | tr -d '"' | awk '{printf("-target=%s.%s ",$2,$3);}')
+      }
+
     '';
   };
 

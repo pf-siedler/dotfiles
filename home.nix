@@ -58,7 +58,7 @@
       fx = "commit --fixup HEAD";
       squash = "commit --squash HEAD";
       sq = "commit --squash HEAD";
-      rvm ="!git fetch & git rebase -i origin/$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')";
+      rvm = "!git fetch & git rebase -i origin/$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')";
       pukk = ''!echo "（○｀3´○）ぷきゅ〜！！" && git pull'';
       latest = "!git --no-pager branch --sort=authordate | tail -n 5";
       delete-merged =

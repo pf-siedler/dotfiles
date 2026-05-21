@@ -43,28 +43,28 @@
   programs.git = {
     enable = true;
 
-    userName = "Takuma Suzuki";
-    userEmail = "pferd262@gmail.com";
-    aliases = {
-      br = "branch";
-      co = "checkout";
-      gl = "log --oneline --graph --decorate";
-      ss = "stash";
-      sp = "stash pop";
-      sl = "stash list";
-      cm = "commit";
-      cma = "commit --amend";
-      fixup = "commit --fixup HEAD";
-      fx = "commit --fixup HEAD";
-      squash = "commit --squash HEAD";
-      sq = "commit --squash HEAD";
-      rvm = "!git fetch & git rebase -i origin/$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')";
-      pukk = ''!echo "（○｀3´○）ぷきゅ〜！！" && git pull'';
-      latest = "!git --no-pager branch --sort=authordate | tail -n 5";
-      delete-merged =
-        "!git branch --merged | grep -vE \\\\\\*\\|master | xargs -I % git branch -d %";
-    };
-    extraConfig = {
+    settings = {
+      user.name = "Takuma Suzuki";
+      user.email = "pferd262@gmail.com";
+      alias = {
+        br = "branch";
+        co = "checkout";
+        gl = "log --oneline --graph --decorate";
+        ss = "stash";
+        sp = "stash pop";
+        sl = "stash list";
+        cm = "commit";
+        cma = "commit --amend";
+        fixup = "commit --fixup HEAD";
+        fx = "commit --fixup HEAD";
+        squash = "commit --squash HEAD";
+        sq = "commit --squash HEAD";
+        rvm = "!git fetch & git rebase -i origin/$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')";
+        pukk = ''!echo "（○｀3´○）ぷきゅ〜！！" && git pull'';
+        latest = "!git --no-pager branch --sort=authordate | tail -n 5";
+        delete-merged =
+          "!git branch --merged | grep -vE \\\\\\*\\|master | xargs -I % git branch -d %";
+      };
       core.editor = pkgs.lib.getExe pkgs.neovim;
       init.defaultBranch = "master";
       pull = { ff = "only"; };
@@ -101,7 +101,7 @@
 
     defaultKeymap = "emacs";
 
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
 
     syntaxHighlighting.enable = true;
 

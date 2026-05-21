@@ -14,9 +14,6 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (pkgs.lib.getName pkg) [ "vscode" ];
-
   home.packages =
     [ pkgs.yq pkgs.jwt-cli pkgs.colordiff pkgs.shellcheck pkgs.docker-client ];
 
@@ -82,7 +79,7 @@
       };
     };
     ignores =
-      [ ".DS_Store" ".direnv" ".vscode" "node_modules/" ".env" "result/" ];
+      [ ".DS_Store" ".direnv" ".vscode" "node_modules/" ".env" "result/" ".claude/settings.local.json" ];
   };
 
   programs.gh = {

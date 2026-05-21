@@ -11,6 +11,9 @@
   };
 
   outputs = { self, nixpkgs, home-manager, flake-utils, nixos-wsl, vscode-server, codex, ... }@inputs:
+    let
+      nixpkgsConfig = { allowUnfree = true; };
+    in
     {
       homeConfigurations = {
         beelink =
@@ -18,7 +21,7 @@
             system = "x86_64-linux";
             pkgs = import nixpkgs {
               inherit system;
-              config.allowUnfree = true;
+              config = nixpkgsConfig;
             };
           in
           home-manager.lib.homeManagerConfiguration {
@@ -46,7 +49,7 @@
             system = "aarch64-darwin";
             pkgs = import nixpkgs {
               inherit system;
-              config.allowUnfree = true;
+              config = nixpkgsConfig;
               overlays = [ codex.overlays.default ];
             };
           in

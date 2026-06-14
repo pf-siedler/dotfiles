@@ -44,6 +44,43 @@
               })
             ];
           };
+        wslUbuntu = 
+          let
+            system = "x86_64-linux";
+            pkgs = import nixpkgs {
+              inherit system;
+              config.allowUnfree = true;
+            };
+          in
+          home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            extraSpecialArgs = { inherit inputs; };
+            modules = [
+              ./home.nix
+              ./starship-windows-terminal.nix
+              ({ pkgs, ... }: {
+                home.username = "pfsiedler";
+                home.homeDirectory = "/home/pfsiedler";
+                programs.vscode.enable = pkgs.lib.mkForce false;
+                programs.zsh.enable = pkgs.lib.mkForce false;
+                programs.bash = {
+                  enable = true;
+                  enableCompletion = true;
+                  historyControl = ["ignoreboth"];
+                  historySize = 10000;
+                  historyFileSize = 20000;
+                };
+                programs.direnv.enableBashIntegration = true;
+                nix = {
+                  package = pkgs.nixVersions.stable;
+                  extraOptions = ''
+                    experimental-features = nix-command flakes
+                    extra-trusted-users = pf-siedler
+                  '';
+                };
+              })
+            ];
+        };
         herp =
           let
             system = "aarch64-darwin";

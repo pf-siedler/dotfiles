@@ -1,8 +1,15 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
+let
+  # claude-code のみ unstable の nixpkgs を参照する
+  unstablePkgs = import inputs.nixpkgs-unstable {
+    inherit (pkgs.stdenv.hostPlatform) system;
+    config = { allowUnfree = true; };
+  };
+in
 {
   home.username = "pf-siedler";
   home.homeDirectory = "/Users/pf-siedler";
-  home.packages = [ pkgs.colima ];
+  home.packages = [ unstablePkgs.claude-code ];
   codex.enable = true;
   nix = {
     package = pkgs.nixVersions.stable;

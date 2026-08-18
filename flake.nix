@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/25.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     codex.url = "path:///Users/pf-siedler/herp/codex";
     flake-utils.url = "github:numtide/flake-utils";

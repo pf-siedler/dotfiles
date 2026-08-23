@@ -45,7 +45,7 @@
               })
             ];
           };
-        wslUbuntu = 
+        wslUbuntu =
           let
             system = "x86_64-linux";
             pkgs = import nixpkgs {
@@ -59,27 +59,7 @@
             modules = [
               ./home.nix
               ./starship-windows-terminal.nix
-              ({ pkgs, ... }: {
-                home.username = "pfsiedler";
-                home.homeDirectory = "/home/pfsiedler";
-                programs.vscode.enable = pkgs.lib.mkForce false;
-                programs.zsh.enable = pkgs.lib.mkForce false;
-                programs.bash = {
-                  enable = true;
-                  enableCompletion = true;
-                  historyControl = ["ignoreboth"];
-                  historySize = 10000;
-                  historyFileSize = 20000;
-                };
-                programs.direnv.enableBashIntegration = true;
-                nix = {
-                  package = pkgs.nixVersions.stable;
-                  extraOptions = ''
-                    experimental-features = nix-command flakes
-                    extra-trusted-users = pf-siedler
-                  '';
-                };
-              })
+              ./wslUbuntu.nix
             ];
         };
         herp =
@@ -125,35 +105,6 @@
               })
             ];
           };
-      };
-      nixosConfigurations = {
-        # for WSL NixOS
-        wsl = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            nixos-wsl.nixosModules.default
-            vscode-server.nixosModules.default
-            ./wsl.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.nixos =
-                ({ pkgs, ... }: {
-                  imports = [
-                    ./home.nix
-                    ./starship-windows-terminal.nix
-                  ];
-                  programs.vscode.enable = pkgs.lib.mkForce false;
-                });
-            }
-            ({ pkgs, ... }: {
-              nix.settings.experimental-features = [ "nix-command" "flakes" ];
-              programs.zsh.enable = true;
-              users.defaultUserShell = pkgs.zsh;
-            })
-          ];
-        };
       };
     } // flake-utils.lib.eachDefaultSystem (system:
       let pkgs = nixpkgs.legacyPackages.${system};

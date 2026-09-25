@@ -9,8 +9,11 @@ in
 {
   home.username = "pf-siedler";
   home.homeDirectory = "/Users/pf-siedler";
-  home.packages = [ unstablePkgs.claude-code ];
-  codex.enable = true;
+  home.packages = [
+    unstablePkgs.claude-code
+    unstablePkgs.herdr
+  ];
+  codex.standardPackages.enable = true;
   nix = {
     package = pkgs.nixVersions.stable;
     extraOptions = ''

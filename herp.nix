@@ -5,6 +5,8 @@ let
     inherit (pkgs.stdenv.hostPlatform) system;
     config = { allowUnfree = true; };
   };
+  # DataDog/pup は nixpkgs 未登録かつ新しい rustc を要求するため unstable でビルドする
+  pup = unstablePkgs.callPackage ./pkgs/pup.nix { };
 in
 {
   home.username = "pf-siedler";
@@ -12,6 +14,7 @@ in
   home.packages = [
     unstablePkgs.claude-code
     unstablePkgs.herdr
+    pup
   ];
   codex.standardPackages.enable = true;
   nix = {

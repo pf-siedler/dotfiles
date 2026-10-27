@@ -7,8 +7,8 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1793086738,
-        "narHash": "sha256-pg06OPKml7z+30EdcHNK0q8u3kwV1Dk2aVgEinszTL0=",
+        "lastModified": 1793086448,
+        "narHash": "sha256-0W3uWnLa8Ivv4GOk1jTCr7AgpNa+wCT33ffqEAiMR0A=",
         "path": "/Users/pf-siedler/herp/codex",
         "type": "path"
       },

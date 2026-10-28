@@ -16,6 +16,8 @@ in
     unstablePkgs.herdr
     pup
   ];
+  # nixpkgs 版 claude-code は組み込みのルート CA ストアを持たないため明示的に渡す
+  home.sessionVariables.NODE_EXTRA_CA_CERTS = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
   codex.standardPackages.enable = true;
   nix = {
     package = pkgs.nixVersions.stable;

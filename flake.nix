@@ -2,9 +2,9 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
     codex.url = "path:///Users/pf-siedler/herp/codex";
     flake-utils.url = "github:numtide/flake-utils";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
@@ -68,7 +68,16 @@
             pkgs = import nixpkgs {
               inherit system;
               config = nixpkgsConfig;
-              overlays = [ codex.overlays.default ];
+              overlays = [
+                codex.overlays.default
+                # codex overlay の nodejs 差し替えで neovim がキャッシュから外れ、
+                # ローカルビルドではテストが --listen に失敗するため、元の nodejs に戻す
+                (final: prev: {
+                  neovim-unwrapped = prev.neovim-unwrapped.override {
+                    nodejs = nixpkgs.legacyPackages.${system}.nodejs;
+                  };
+                })
+              ];
             };
           in
           home-manager.lib.homeManagerConfiguration {
